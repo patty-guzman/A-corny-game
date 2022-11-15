@@ -1,0 +1,2032 @@
+/*
+CS - 2011
+Group Name: Zoink
+Dennis Martinez
+Patricia Guzman
+Joselyn Grajeda
+Hunter Williamson
+Alexander Mendez
+Description: A Corny Game is a game about a traveler who doesn't know
+where they are. However, throughout their journey, they are able to discover
+the secrets of the world they live in. Maybe they will become king, maybe they
+will save the future. Or maybe, they just end up dying. It's up to you and your
+choices. Good luck!*/
+import java.util.Scanner;
+public class ACornyGame {
+  static String choicenTool;
+  static boolean cottageDrill = false;
+  static boolean cottageScrewdriver = false;
+  static boolean batteries = false;
+  static boolean stopCottage = true;
+  static boolean checkpointMedieval = true;
+  static boolean cottageCheckPoint = true;
+  static int northCounter = 0;
+  static int southCounter = 0;
+  static int westCounter = 0;
+  static int eastCounter = 0;
+  static boolean stopCottageLoop = false;
+  static boolean northStop = false;
+  static boolean southStop = false;
+  static boolean eastStop = false;
+  static boolean westStop = false;
+  static boolean proceedValley = false;
+  static int whichDoor = 0;
+  static boolean checkpointFuturistic = true;
+  public static boolean futureDoorLoop = true;
+  public static final Scanner input = new Scanner(System.in);
+  public static void main(String[] args) {
+    if(args.length != 0 && args[0].equals("-help")) {
+      displayHelp();
+    }
+
+    else {
+      PhaseOne();
+      cottagePoint();
+      if (proceedValley)
+        valleyPhase();
+      if (whichDoor == 1)
+       phaseFourDoorOne();
+      else if (whichDoor == 2)
+        phaseFourDoorTwo();
+
+  }
+}
+
+//------------------------------------------------------------------------------
+  public static void PhaseOne() {
+    constantType(50, "You feel your eyes very heavy, barely able to open them.");
+    pause (1000);
+    constantType(50, "\n...");
+    pause (1000);
+    constantType(50, "\nYou can't feel much of your body");
+    pause (1000);
+    constantType(50, "\n...");
+    pause (1000);
+    constantType(50, "\nBut somehow you feel yourself on the ground");
+    pause (1000);
+    constantType(50, "\n...");
+    pause (1000);
+    constantType(50, "\nYou attempt your best to open your eyes and tried to " +
+    "make out a few things you see");
+    pause (1000);
+    constantType(50, "\n...");
+    pause (1000);
+    constantType(50, "\nBlue Sky");
+    pause (1000);
+    constantType(40, "\nAnd... corn leaves?");
+    pause (1000);
+    constantType(50, "\n...");
+    pause (1000);
+//----------------------------------first decision----------------------------
+    pause(500);
+    constantType(50,"\nGet up? (Y/N)");
+    String scan = input.next();
+
+        if (scan.equalsIgnoreCase("Y")) {
+          constantType(50, "You get up from where you were laying");
+
+        } else
+          while (!scan.equalsIgnoreCase("Y")|| !scan.equalsIgnoreCase("N")) {
+            pause(1000);
+            constantType(37, "That's an invalid input");
+            pause(1000);
+            constantType(50,"\nGet up? (Y/N)");
+            scan = input.next();
+
+            if (scan.equalsIgnoreCase("N")) {
+              pause(1000);
+              constantType(37, "You're on the ground..I think it's best to get "
+              + "up");
+              pause(1000);
+              constantType(50,"\nGet up? (Y/N)");
+              scan = input.next();
+            }
+            if (scan.equalsIgnoreCase("Y")) {
+              constantType(40, "You get up from where you were laying");
+              break;
+            }
+          }
+
+//-------------------getting up-------------------
+
+        pause(1000);
+        constantType(40, "\nYou manage to gain full consciousness and realize "
+        + "that you somehow find yourself in a corn maze");
+        pause(1000);
+        constantType(45, "\n...");
+        pause(1000);
+        constantType(49, "\nHow strange...maybe you should restrain youself "
+        + "when drinking way too many red bulls");
+        pause(1000);
+        constantType(49, "\nYou think to yourself that it's best to find a way "
+        + "out of this field");
+        pause(1000);
+        constantType(50,"\nLook Around? (Y/N)");
+        scan = input.next();
+
+//-------------------second decision-------------------
+        if (scan.equalsIgnoreCase("Y")) {
+          constantType(40, "You look around to your surroundings");
+
+        }
+        else
+         while (!scan.equalsIgnoreCase("Y") || !scan.equalsIgnoreCase("N")) {
+           pause(1000);
+           constantType(37, "That's an invalid input");
+           pause(1000);
+           constantType(50,"\nLook Around? (Y/N)");
+           scan = input.next();
+
+           if (scan.equalsIgnoreCase("N")) {
+             pause(1000);
+             constantType(40, "I don't think standing around will do "
+             + "anything...");
+             pause(1000);
+             constantType(50,"\nLook Around? (Y/N)");
+             scan = input.next();
+           }
+           if (scan.equalsIgnoreCase("Y")) {
+             constantType(40, "You look around to your surroundings");
+             break;
+           }
+         }
+//-------------------looking around-------------------
+    pause(1000);
+    constantType(40, "\nYou look North and at the far distance you see a "
+    +"horse");
+    pause(1000);
+    constantType(40, "\nYou look South and you see two scarecrows just " +
+    "standing around");
+    pause(1000);
+    constantType(40, "\nYou look West and it's just more corn");
+    pause(1000);
+    constantType(40, "\nFinally you look East and you see a cottage at the " +
+    "far distance");
+    pause(1000);
+    constantType(40, "\nYou think it's best to go towards one of these "
+    + "directions");
+    pause(1000);
+    constantType(40, "\nWhere do you want to go?");
+    pause(1000);
+    constantType(40, "\n(North/South/East/West)");
+    scan = input.nextLine();
+
+//-------------------third decision-------------------
+
+    if (scan.equalsIgnoreCase("East") || scan.equalsIgnoreCase("e")) {
+         constantType(40, "You head east towards the cottage");
+       } else
+         while (!scan.equalsIgnoreCase("East") || !scan.equalsIgnoreCase("E")) {
+           constantType(40, "There's no hope going there");
+           constantType(40, "\nHead North? South? East? or West?");
+           scan = input.nextLine();
+
+           if (scan.equalsIgnoreCase("East") || scan.equalsIgnoreCase("e")) {
+             constantType(40, "You head east to the cottage");
+             break;
+           }
+         }
+
+//-------------------heading to cottage-------------------
+
+         constantType(40, "\nYou push your way out of the field");
+         pause(1000);
+         constantType(40, "\nWhich was hard to do since the corn leaves just "
+         + "kept hitting on to your face");
+         pause(1000);
+         constantType(40, "\nYou make your way up the path that leads to the " +
+         "cottage");
+         pause(1000);
+         constantType(40, "\n'How strange', you thought, just a random cottage "
+         + "in the middle of no where");
+         pause(1000);
+         constantType(40, "\nBefore you know it you make it up to the front of "
+         + "the cottage");
+         pause(1000);
+
+//-------------------last decision-------------------
+    constantType(40, "\n...Do you want to go inside? (Y/N)");
+    pause(1000);
+    scan = input.nextLine();
+
+    if (scan.equalsIgnoreCase("Y")) {
+      constantType(50, "You decide to enter");
+
+    } else
+      while (!scan.equalsIgnoreCase("Y") || !scan.equalsIgnoreCase("N")) {
+        pause(1000);
+        constantType(37, "\nThat's an invalid input");
+        pause(1000);
+        constantType(50,"\n...Do you want to go inside? (Y/N)");
+        scan = input.nextLine();
+
+        if (scan.equalsIgnoreCase("N")) {
+          pause(1000);
+          constantType(37, "It does feel weird to just go in... but maybe it's "
+          +"best");
+          pause(1000);
+          constantType(50,"...Do you want to go inside? (Y/N)");
+          scan = input.nextLine();
+        }
+        if (scan.equalsIgnoreCase("Y")) {
+          constantType(40, "You decide to enter");
+          break;
+        }
+      }
+  }
+//------------------------------------------------------------------------------
+  public static void cottagePoint() {
+    do {
+      cottageDrill = false;
+      cottageScrewdriver = false;
+      batteries = false;
+      stopCottage = true;
+      northCounter = 0;
+      southCounter = 0;
+      westCounter = 0;
+      eastCounter = 0;
+      stopCottageLoop = false;
+      northStop = false;
+      southStop = false;
+      eastStop = false;
+      westStop = false;
+      callingCottage();
+      pause(3000);
+      seeCottageCheckpoint();
+    } while(cottageCheckPoint);
+  }
+//------------------------------------------------------------------------------
+public static void callingCottage(){
+
+    constantType(40, "\n*You have entered the cottage*");
+    System.out.println();
+    constantType(40, "The inside of the cottage seems pretty normal, there is "
+                     + "not much to it.");
+    System.out.println();
+    constantType(40, "A floral single couch chair, a dusty piano, graffiti on "
+                     + "\nthe wall, and nature starting to take over. ");
+    System.out.println();
+    constantType(40, "It would probably be a good idea to look around so you "
+                     + "can continue on with your adventure.");
+    System.out.println();
+
+    do{
+    constantType(40, "Would you like to look around? (Y / N)");
+    String cottageLookAround = input.nextLine();
+    if (cottageLookAround.equalsIgnoreCase("yes") ||
+        cottageLookAround.equalsIgnoreCase("y")){
+          constantType(40, "There's a table on the east side of the cottage. " +
+                           "It looks like it's a tool box on top of it");
+          stopCottageLoop = true;
+
+    }
+    else if (cottageLookAround.equalsIgnoreCase("no") ||
+        cottageLookAround.equalsIgnoreCase("n")){
+          constantType(40, "Okay, remember you can look east, west, north, or "
+                           + "south.");
+          stopCottageLoop = true;
+    }
+    else{
+      constantType(40, "Sorry, that is an invalid input.");
+      System.out.println();
+    }
+  }
+  while(!stopCottageLoop);
+
+  while(!northStop || !southStop || !eastStop || !westStop){
+  System.out.println("");
+  System.out.println("Where would you like to go next? " +
+  "(North, South, East, West)");
+  String cottageCardinalDirections = input.nextLine();
+
+  if(cottageCardinalDirections.equalsIgnoreCase("north") ||
+     cottageCardinalDirections.equalsIgnoreCase("n")){
+       northCounter++;
+       northStop = true;
+       if(northCounter > 1){
+         constantType(40, "You already went north");
+       }
+       else{
+         cottageNorthSide();
+       }
+  }
+  else if(cottageCardinalDirections.equalsIgnoreCase("east") ||
+     cottageCardinalDirections.equalsIgnoreCase("e")){
+       eastCounter++;
+       eastStop = true;
+       if(eastCounter > 1){
+         constantType(40, "You already went east");
+       }
+       else{
+         cottageEastSide();
+       }
+  }
+  else if(cottageCardinalDirections.equalsIgnoreCase("south") ||
+     cottageCardinalDirections.equalsIgnoreCase("s")){
+       southCounter++;
+       southStop  = true;
+       if(southCounter > 1){
+         constantType(40, "You already went east");
+       }
+       else{
+         cottageSouthSide();
+       }
+  }
+  else if(cottageCardinalDirections.equalsIgnoreCase("west") ||
+     cottageCardinalDirections.equalsIgnoreCase("w")){
+       westCounter++;
+       westStop = true;
+       if(westCounter > 1){
+         constantType(40, "You already went west");
+       }
+       else{
+         cottageWestSide();
+       }
+  }
+  else{
+    constantType(40, cottageCardinalDirections + " is not a valid input");
+  }
+}
+ if(northCounter > 1 || southCounter > 1 || westCounter > 1
+        || eastCounter > 1){
+      constantType(40, "You have already looked around all the cabin." +
+                       "\nIt is time to head out to the next phase.");
+      proceedValley = true;
+  }
+
+}
+//------------------------------------------------------------------------------
+  public static void cottageNorthSide(){
+  constantType(40, "On the north side of the cottage there is two paintings" +
+              "\nOn the left side there's the 'The Wilton Diptych painting', " +
+                "\none of the most highly-revered and mysterious works from " +
+                "medieval times." +
+                "\nWhile on the right side there's the 'Città Nuova' by " +
+                "Antonio Sant'Elia, " +
+                "\nbest known for his futuristic designs " +
+                "for a modern city" +
+                "\nWhoever lived here had good taste in art");
+}
+//------------------------------------------------------------------------------
+  public static void cottageSouthSide(){
+  constantType(40, "On the south side of the cottage there is graffiti." +
+                   "\nIt looks like it's a drawing of a mad man with the " +
+                   "phrase 'BEWARE'"+
+                   "\nHe looks pretty scary, I would not like to cross him.");
+}
+//------------------------------------------------------------------------------
+public static void cottageEastSide(){
+int toolCounter = 0;
+constantType(40, "There is a tool box on top of the table.");
+constantType(40, "\nWould you like to open it? (Y / N)");
+String openToolBox = input.nextLine();
+
+if(openToolBox.equalsIgnoreCase("yes") || openToolBox.equalsIgnoreCase("y")){
+     constantType(40, "You open the tool box to discover a screwdriver (1) and "
+                    + "a battery powered drill (2)");
+     constantType(40, "\nWhich one would you like to take?");
+     choicenTool = input.nextLine();
+     if (choicenTool.equalsIgnoreCase("screwdriver") ||
+         choicenTool.equalsIgnoreCase("1")) {
+       constantType(40, "You have chosen the screwdriver");
+       cottageScrewdriver = true;
+
+     }
+     else if (choicenTool.equalsIgnoreCase("battery powered drill") ||
+              choicenTool.equalsIgnoreCase("drill") ||
+              choicenTool.equalsIgnoreCase("powered drill") ||
+              choicenTool.equalsIgnoreCase("2")) {
+       constantType(40, "You have chosen the battery powered drill");
+       cottageDrill = true;
+     }
+     else{
+       constantType(40, "Sorry " + choicenTool + " is not a valid action.");
+     }
+
+}
+else if(openToolBox.equalsIgnoreCase("no") ||
+        openToolBox.equalsIgnoreCase("n")) {
+     northStop = true;
+     southStop = true;
+     eastStop = true;
+     westStop = true;
+     constantType(40, "Let's hope that action will not have any consequences");
+     pause(1500);
+     constantType(40, "\n. . .");
+     constantType(40, "\nOops it did.");
+     constantType(25, "\n\n-------------------------------------");
+     System.out.println("");
+     System.out.print("+++++++++");
+     constantType(100, " Y O U   D I E D ");
+     System.out.print("++++++++++");
+     System.out.println("");
+     constantType(25, "-------------------------------------");
+     System.out.println("\n");
+     cottageCheckPoint = true;
+}
+else{
+  constantType(40, "Sorry, " + openToolBox + "is not a valid input.");
+}
+}
+//------------------------------------------------------------------------------
+  public static void cottageWestSide(){
+    constantType(40, "On the west side of the cottage there is a bookshelf. " +
+                    "\nOn top of that bookshelf there is a box of batteries." +
+                    "\nWould you like to take them? (Y / N)");
+                    String takeBatteries = input.nextLine() ;
+    if(takeBatteries.equalsIgnoreCase("yes") ||
+       takeBatteries.equalsIgnoreCase("y")){
+       batteries = true;
+       cottageCheckPoint = false;
+     }
+     else if (takeBatteries.equalsIgnoreCase("no") ||
+              takeBatteries.equalsIgnoreCase("n")) {
+    if(batteries && !cottageDrill){
+      constantType(25, "\n\n-------------------------------------");
+      System.out.println("");
+      System.out.print("+++++++++");
+      constantType(100, " Y O U   D I E D ");
+      System.out.print("++++++++++");
+      System.out.println("");
+      constantType(25, "-------------------------------------");
+      System.out.println("\n");
+      cottageCheckPoint = true;
+    }
+    northStop = true;
+    southStop = true;
+    eastStop = true;
+    westStop = true;
+  }
+  else{
+    constantType(40, "Sorry, " + takeBatteries + "is not a valid input.");
+  }
+}
+//-----------------------------------------------------------------------------
+  public static void seeCottageCheckpoint() {
+    if (cottageCheckPoint) {
+      System.out.println("\n\nYou have died! If you wish to start from your " +
+                         "recent checkpoint, enter yes. \nOtherwise, " +
+                         "enter no.");
+      String continueCheckPoint = input.nextLine();
+      if (continueCheckPoint.equalsIgnoreCase("yes") ||
+          continueCheckPoint.equalsIgnoreCase("y")) {
+        System.out.println("You entered YES. The game will continue");
+        checkpointText();
+      }
+      else if(continueCheckPoint.equalsIgnoreCase("no") ||
+              continueCheckPoint.equalsIgnoreCase("n")) {
+        System.out.println("You entered NO. The game will now exit");
+        gameoverText();
+        cottageCheckPoint = false;
+      }
+      else {
+        System.out.println("You seem to have entered an invalid option. " +
+                          "Game will now exit.");
+        gameoverText();
+        cottageCheckPoint = false;
+      }
+    }
+  }
+//------------------------------------------------------------------------------
+  static boolean stopGame = true;
+  static String divider = "---------------------------------------------------";
+  public static void valleyPhase() {
+    constantType(40, "After heading out the cottage, you head east. "
+                     + "\nAfter a while,"
+                     + "\nyou find yourself to be in the middle of a valley.\n"
+                     + "\nNext to you is a sign:");
+    pause(1000);
+    randomType("\n'Valley of Choice... BEWARE!'");
+    pause(1000);
+    constantType(40, "\n\nYou stand in the middle of an intersecting path"
+                   + "\nEach path points to a cardinal direction: "
+                   + "\nNorth, East, West, South");
+    pause(500);
+    System.out.println("\n" + divider);
+
+    do {
+      pause(1500);
+      System.out.print("Which path will you take? (north/east/west/south): ");
+
+      String pathChoice = input.nextLine();
+      switch(pathChoice.toLowerCase()) {
+        case "n":
+        case "north": northPath(); break;
+        case "s":
+        case "south": southPath(); break;
+        case "e":
+        case "east": eastPath(); break;
+        case "w":
+        case "west": westPath(); break;
+        default: {
+          constantType(50, "You did not put a cardinal direction. "
+                               + "Try Again. ");
+          System.out.println("\n");
+        }
+      }
+    } while (stopGame);
+  }
+
+//------------------------------------------------------------------------------
+
+static int whichPath = 0;
+static boolean hasDrill = true;
+public static void northPath() {
+  whichPath = 1;
+  System.out.println(divider);
+  if (hasDrill) {
+    constantType(40, "You head north."
+                   + "\nAs you are taking the path northbound,"
+                   + "\nYou feel woozy."
+                   + "\nYou feel as if the space around you has been "
+                   + "\ndistorted and time progressed faster than normal");
+    System.out.println("\n" + divider);
+    constantType(40, "You are now harboring doubts...");
+    System.out.println("");
+    questionPath();
+    if (proceedPathVal) {
+      System.out.println(divider);
+      randomType("You proceeded to take the path."
+               + "\nAs you continued to your chosen path, "
+               + "\nthe wooziness and distortion start to alleviate."
+               + "\nMoments later, you finally reached the end of the "
+               + "path.\nAt the end of a path is a door and a sign "
+               + "that says: 'The Future'\n");
+      pause(3000);
+      if (cottageDrill) {
+        constantType(40, "\nAs you approach the door, it seems to have sensed "
+                      + "\nthe presence of the powered drill you looted from "
+                      + "the cottage.");
+        pause(2000);
+        randomType("\nThe door opens up and sucks you in...");
+        System.out.println("\n" + divider);
+        stopGame = false;
+        whichDoor = 1;
+      }
+      else {
+        hasDrill = false;
+        constantType(40, "\nThe door is sealed shut. \nYou tried to open it but"
+                       + " it was to no avail. \nIt seems like this path is a "
+                       + "dead-end, afterall. ");
+        pause(1000);
+        System.out.println("\n" + divider);
+        constantType(40, "You decided to head back the valley and ponder once "
+                       + "again:");
+        System.out.println("");
+      }
+    }
+  }
+  else {
+    constantType(40, "You've already reached the end of this path."
+                  + "\nIt was a dead-end.");
+    System.out.println("");
+  }
+
+}
+
+//------------------------------------------------------------------------------
+
+  public static void eastPath() {
+    System.out.println(divider);
+    constantType(40, "You head back east."
+                   + "\nThis was the direction you came from."
+                   + "\nWeirdly enough, the path eastbound has been blocked "
+                   + "by a thick mist."
+                   + "\nThe thick mist has prevented you to proceed in this "
+                   + "path.\nYou decided to head back to the center of the "
+                   + "valley.");
+    System.out.println("\n" + divider);
+    constantType(40, "You ponder once again:");
+    System.out.println("");
+
+  }
+
+//------------------------------------------------------------------------------
+
+  static boolean hasScrew = true;
+  public static void southPath() {
+    whichPath = 2;
+    System.out.println(divider);
+    if(hasScrew) {
+      constantType(40, "You head south."
+                     + "\nAs you are taking the path southbound,"
+                     + "\nYou feel vertiginous."
+                     + "\nYou feeleth as if the space 'round "
+                     + "thee hast been distorted,"
+                     + "\nand timeth regressed towards the past yond didst not"
+                     + " occureth.");
+      System.out.println("\n" + divider);
+      constantType(40, "Thou art now harb'ring doubts...");
+      System.out.println("");
+      questionPath();
+      if (proceedPathVal) {
+        System.out.println(divider);
+        randomType("Thou proceeded to take the path."
+                 + "\nAs thou continued to thy chosen path, "
+                 + "\nthe vertigo and distortion reaches the degree of "
+                 + "alleviation.\nMoments later, thou finally reached "
+                 + "the end of the path.\nAt the end of a path is a "
+                 + "door and a sign that says: 'The Past'\n");
+         pause(3000);
+         if (cottageScrewdriver) {
+           constantType(40, "\nAs you approach the door, it seems to have sensed"
+                         + "\nthe presence of the screwdriver you looted from "
+                         + "the cottage.");
+           pause(2000);
+           randomType("\nThe door opens up and sucks you in...");
+           System.out.println("\n" + divider);
+           stopGame = false;
+           whichDoor = 2;
+         }
+         else {
+           hasScrew = false;
+           constantType(40, "\nThe door is sealed shut. \nYou tried to open it "
+                          + "but it was to no avail. \nIt seems like this path "
+                          + "is a dead-end, afterall. ");
+           pause(1000);
+           System.out.println("\n" + divider);
+           constantType(40, "You decided to head back the valley and ponder "
+                          + "once again:");
+           System.out.println("");
+         }
+      }
+    }
+    else {
+      constantType(40, "You've already reached the end of this path."
+                    + "\nIt was a dead-end.");
+      System.out.println("");
+    }
+
+  }
+
+//------------------------------------------------------------------------------
+
+static int hereBefore = 0;
+public static void westPath() {
+  whichPath = 1;
+  if (hereBefore < 2) {
+    System.out.println(divider);
+    constantType(40, "You head west."
+                   + "\nThe path westbound seemed normal,"
+                   + "\nway TOO normal, you thought to yourself... "
+                   + "\nYou start to question whether this path is worth your"
+                   + " time.");
+    System.out.println("\n" + divider);
+    constantType(40, "You are now harboring doubts...");
+    System.out.println("");
+    questionPath();
+    if (proceedPathVal) {
+      System.out.println(divider);
+      constantType(40, "You continued towards the westward path..."
+                     + "\nAs you continue to your path, "
+                     + "you encounter a perfect stranger...");
+      System.out.println("\n" + divider);
+      pause(2000);
+      constantType(50, "\"Greetings, Traveler...\", ");
+      pause(1500);
+      constantType(40, "the stranger greeted.\n");
+      pause(2000);
+      if (hereBefore == 1)
+        constantType(50, "\n\"You seemed to have stumble upon the path of--");
+      else {
+        constantType(50, "\n\"You seemed to have stumble upon the path of "
+                     + "'The Present'.\"\n");
+      }
+      pause(2000);
+      if (hereBefore == 1) {
+        constantType(50, "\n\"Wait... it's just you. You already know the "
+                       + "deal with this path. \nIf you're here, then you "
+                       + "changed your mind about this path...\nOr... do you "
+                       + "wonder what this path this again??\"");
+
+        System.out.print("\nYou wonder again? (yes/no): ");
+
+        String youWonder = input.nextLine();
+        System.out.println("");
+        if (youWonder.equalsIgnoreCase("yes")) {
+          constantType(50, "\"I guess you weren't paying attention the first "
+                        + "time... Well then...\"");
+          pause(2000);
+          westMonologue();
+        }
+        else
+          constantType(50, "\"I'll take that as a no...\nSo...\"");
+      }
+      else
+        westMonologue();
+      pause(3000);
+      System.out.println("\n" + divider);
+      constantType(50, "\"Now that you know the risk of heading beyond west:"
+                     + "\nAre you still willing to continue?\"");
+      pause(1000);
+      System.out.println("\n" + divider);
+
+      int confused = 1;
+      do {
+        System.out.print("Continue? (yes/no): ");
+        String continueWest = input.nextLine();
+        if (continueWest.equalsIgnoreCase("yes")) {
+          confused--;
+          kanyeWest();
+        }
+        else if (continueWest.equalsIgnoreCase("no")) {
+          confused--;
+          hereBefore=1;
+          constantType(50, "\"Wise choice...\"\n");
+          pause(2000);
+          constantType(40, "\nThe stranger snapped his fingers,"
+                         + "\nand you were teleported back to the center of "
+                         + "the valley...");
+           System.out.println("\n" + divider);
+           constantType(40, "You ponder once again:");
+           System.out.println("");
+        }
+        else {
+          System.out.println("That's not one of the option. Try again.");
+          pause(1000);
+        }
+        // stopGame = false;
+      } while (confused == 1);
+    }
+  }
+  else {
+    constantType(40, "The 'Mark of the Forfeiter' prevents you from taking "
+                   + "\nthe Western Path.\nYou are forced back to the center "
+                   + "of the valley...");
+     System.out.println("\n" + divider);
+     constantType(40, "You ponder once again:");
+     System.out.println("");
+  }
+
+}
+
+//------------------------------------------------------------------------------
+
+public static void westMonologue() {
+  constantType(50, "\n\"Why is it called 'The Present', you wonder?\"\n");
+  pause(2000);
+  constantType(50, "\n\"Well, you see it's called 'The Present' \nbecause "
+                 + "unlike the northern and southern paths, \nthe flow of "
+                 + "time and space here is completely normal, \nthus, "
+                 + "allowing you to live in the present, as usual...\"\n");
+  pause(2000);
+  constantType(50, "\n\"At the end of this path,");
+  pause(1000);
+  constantType(50, "\nYou will be greeted with a great challenge...\"\n");
+  pause(1000);
+  constantType(50, "\n\"...A great challenge that may lead to great suffering"
+                + "\n where the only chance of escape is death. \nHowever, "
+                + "if you do overcome such hardship, \nyou will be "
+                + "triumphant \nand "
+                + "you will be rewarded for your valiant effort."
+                + "\nIf you continue any further, there is NO GOING BACK. "
+                + "\nUnless... of course, you die during the challenge and "
+                + "\nchoose to end the cycle...\"");
+}
+
+static String tryAgain = "";
+public static void diedText() {
+  constantType(25, "\n\n-------------------------------------");
+  System.out.println("");
+  System.out.print("+++++++++");
+  constantType(100, " Y O U   D I E D ");
+  System.out.print("++++++++++");
+  System.out.println("");
+  constantType(25, "-------------------------------------");
+  System.out.println("\n");
+  boolean tryAgainLoop = true;
+
+  do {
+    System.out.print("Try Again? (yes/no): ");
+
+    tryAgain = input.nextLine();
+    if (tryAgain.equalsIgnoreCase("yes")) {
+      fightAttempt++;
+      constantType(50, "-------------- L O A D I N G --------------");
+      System.out.println("\n");
+      tryAgainLoop = false;
+    }
+    else if (tryAgain.equalsIgnoreCase("no")) {
+      randomType("Seems like you have forfeited from the challenge."
+               + "\nYou are now MARKED.");
+      System.out.println("\n\n----------------------------"+
+                         "\n++++++++++++++++++++++++++++");
+      constantType(100, " === F O R F E I T E D === ");
+      System.out.println("\n++++++++++++++++++++++++++++"+
+                         "\n----------------------------\n");
+      constantType(50, "-------------- L O A D I N G --------------");
+      System.out.println("\n");
+      fight = false;
+      hereBefore = 2;
+      tryAgainLoop = false;
+    }
+    else {
+      System.out.println("That's an invalid input. \n");
+    }
+  } while (tryAgainLoop);
+}
+//------------------------------------------------------------------------------
+
+static boolean fight = true;
+public static void kanyeWest() {
+  System.out.println(divider);
+  constantType(50, "\"Oh ho... you are quite bold, Traveler."
+                 + "There is no turning back now... "
+                 + "\nTake these: you are gonna need it beyond the path.\"");
+  System.out.println("\n" + divider);
+  pause(1000);
+  constantType(70, "Attack and Heal acquired.\n");
+  pause(2000);
+  constantType(50, "\n\"See you later, Traveler...\", says the stranger,"
+                 + "\nas he vanishes into thin air.");
+  pause(2000);
+  System.out.println("\n" + divider);
+  constantType(40, "You continued towards the western path."
+                 + "\nMinutes later, you finally reached the end of the path."
+                 + "\nThe end of the path is just an open field."
+                 + "\nAt the middle of the open field is a familiar face.");
+  System.out.println("");
+  pause(3000);
+  randomType("\n\"I told you we're gonna see each other again, traveler...\""
+           + "\nsaid the Stranger, menacingly.\n");
+  pause(1000);
+
+  boolean loopClear = true;
+  do {
+    System.out.print("\nThe Stranger:");
+    constantType(40, "\"Welcome to 'The Present' challenge!"
+                   + "\nThe challenge is simple: all you gotta do is beat me"
+                   + "\nin a duel. If you beat me, you win, and if I beat "
+                   + "you,\nwell, you simply die.\n");
+    pause(3000);
+    randomType("\nHOWEVER");
+    pause(1000);
+    constantType(40, "\nYour death will not be permanent. You will get the"
+                   + "\nchance to fight or forfeit"
+                   + " from the challenge.\nNot that harsh, really.\nIf you "
+                   + "do forfeit from this challenge,\nyou won't get the "
+                   + "chance to attempt this challenge ever again. EVER."
+                   + "\nIs that clear?\"");
+    System.out.println("\n" + divider);
+    System.out.print("(yes/no): ");
+    String isClear = input.nextLine();
+    if (isClear.equalsIgnoreCase("yes")) {
+      constantType(50, "\n\"That's good to hear!\"");
+      System.out.println("\n" + divider);
+      loopClear = false;
+    }
+    else if (isClear.equalsIgnoreCase("no"))
+      randomType("\n\"WELL LISTEN CAREFULLY\"\n");
+    else {
+      constantType(50, "\n\"I'll take that as a yes\"");
+      System.out.println("\n" + divider);
+      loopClear = false;
+    }
+  } while(loopClear);
+  coinFlip();
+
+  switch(turn){
+    case 1: firstTurn(); break;
+    default: secondTurn(); break;
+  }
+
+  if (bossHP <= 0)
+    westEnding();
+
+}
+
+//------------------------------------------------------------------------------
+
+static int playerHP = 5;
+public static void playerTurn() {
+  if (playerHP > 0) {
+    System.out.println("\nYour Turn");
+    System.out.print("Possibles moves: ('1' to attack/ '2' to heal): ");
+    String playerMove = input.nextLine();
+    int playerDmg = (int)(1+Math.random()*3);
+    switch(playerMove.toLowerCase()) {
+      case "1": {
+        if ((int)(1+Math.random()*4) == 4) {
+          playerDmg = playerDmg + 3;
+          bossHP = bossHP - playerDmg;
+        }
+        else
+          bossHP = bossHP - playerDmg;
+        System.out.println("Damage dealt: -" + playerDmg);
+      } break;
+      case "2": {
+        if (playerHP >= 5)
+          System.out.println("Your health is already full.");
+        else {
+          System.out.println("Your health replenished by one.");
+          playerHP++;
+        }
+      } break;
+      default: System.out.println("You missed your turn"); break;
+    }
+  }
+
+}
+
+//------------------------------------------------------------------------------
+
+static int bossHP = 20;
+static int bossAttackVal = 0;
+static boolean unBlockable = false;
+public static void bossTurn() {
+
+  System.out.println("\nThe Stranger's Turn");
+  int bossAttack = (int)(1+Math.random()*10);
+  if (bossAttack == 10) {
+    if (bossHP < 15) {
+      bossHP = bossHP + (int)(2+Math.random()*4);
+      System.out.println("The Stranger uses heal!" + "\nThe Stranger HP: "
+                          + bossHP);
+    }
+    bossAttack = (int)(1+Math.random()*9);
+  }
+  System.out.println("The Stranger prepares to attack: \n");
+
+  int bossMove = 1;
+  if (bossHP < 10)
+    bossMove = (int)(1+Math.random()*5);
+
+
+  if (bossHP < 10 && (int)(1+Math.random()*3) == 3) {
+    unBlockable = true;
+    System.out.println("The Stranger invokes an unblockable attack!");
+    dmgCheck();
+  }
+  else {
+    if (bossMove > 1) {
+      System.out.println("The Stranger invokes a successive attack! "
+                       + "Prepare to dodge a barrage of attacks!\n");
+    }
+    do {
+      if (bossHP < 10)
+        bossAttack = (int)(1+Math.random()*9);
+
+      switch(bossAttack) {
+        case 1:
+        case 2:
+        case 3: {
+          if((int)(1+Math.random()*2) == 1)
+            System.out.println("RIGHT ATTACK");
+          else
+            System.out.println("LEFT HOOK ATTACK");
+          bossAttackVal = 1;
+        } break;
+        case 4:
+        case 5:
+        case 6: {
+          if((int)(1+Math.random()*2) == 1)
+            System.out.println("LEFT ATTACK");
+          else
+            System.out.println("RIGH HOOK ATTACK");
+          bossAttackVal = 2;
+        } break;
+        case 7:
+        case 8:
+        case 9: {
+          if((int)(1+Math.random()*2) == 1)
+            System.out.println("SWEEP ATTACK");
+          else
+            System.out.println("GROUND ATTACK");
+          bossAttackVal = 3;
+        } break;
+        default: System.out.println(""); break;
+      }
+
+    System.out.println("");
+    playerReact();
+    dmgCheck();
+    if (playerHP <= 0)
+      bossMove = 0;
+    bossMove--;
+    } while(bossMove > 0);
+  }
+}
+
+//------------------------------------------------------------------------------
+
+static int posBossTurnMoveVal = 0;
+public static void playerReact() {
+  System.out.print("How will you respond to the attack:"
+                 + "\nroll left, roll right, or jump up?"
+                 + "\n( '1' to roll left/ '2' to roll right/ '3' to jump): ");
+
+  String posBossTurnMove = input.nextLine();
+  switch(posBossTurnMove.toLowerCase()) {
+    case "1": posBossTurnMoveVal = 1; break;
+    case "2": posBossTurnMoveVal = 2; break;
+    case "3": posBossTurnMoveVal = 3; break;
+    default: posBossTurnMoveVal = 0; break;
+  }
+
+
+}
+
+//------------------------------------------------------------------------------
+
+static int fightAttempt = 1;
+static int turn;
+public static void coinFlip() {
+  System.out.print("The Stranger: ");
+  if (fightAttempt > 1) {
+    constantType(20, "\"Oh you're back!! I see you that still haven't given "
+                  +  "up yet.\nThis is your ATTEMPT NUMBER:");
+    System.out.print(fightAttempt + ".");
+    pause(2000);
+    constantType(20, "\nWell, you know the deal: pick a coin side and the duel "
+                   + "starts...\"");
+  }
+  else {
+    constantType(20, "\"I have a coin. This coin will decide who gets to "
+                   + "have\nthe first turn. \nOur duel shall begin when you "
+                   + "pick a side of the coin.\nIf the side you pick matches "
+                   + "with the coin,\nYou get the 1st turn. Otherwise I get "
+                   + "it.\"");
+  }
+  pause(2000);
+  System.out.println("\n" + divider);
+  boolean coin = true;
+  String sideChoice;
+  int sideChoiceVal = 0;
+  do {
+    System.out.println("Heads or Tails?");
+    System.out.print("(heads/tails): ");
+    sideChoice = input.nextLine();
+    switch(sideChoice.toLowerCase()) {
+      case "heads": sideChoiceVal = 1; coin = false; break;
+      case "tails": sideChoiceVal = 2; coin = false; break;
+      default: {
+        System.out.println("That's not a side of a coin. Try Again.");
+      }
+    }
+  } while(coin);
+
+  constantType(5, "O()|()O()|()O()|()O()|()O()|()O()|()O");
+  pause(1000);
+  System.out.println("\n");
+  int coinSideVal = (int)(1 + Math.random() * 2);
+  System.out.println("A coin has been flipped!");
+
+  String coinSide;
+  switch(coinSideVal) {
+    case 1: coinSide = "heads"; break;
+    case 2: coinSide = "tails"; break;
+    default: coinSide = ""; break;
+  }
+
+  System.out.println("You chose " + sideChoice + "."
+                   + "\nThe coin landed on " + coinSide + ".");
+  pause(1000);
+
+  if (sideChoiceVal == coinSideVal) {
+    System.out.println("The first turn is yours!");
+    turn = 1;
+  }
+  else {
+    System.out.println("Sadly, The Stranger gets the first turn!");
+    turn = 2;
+  }
+
+}
+
+//------------------------------------------------------------------------------
+
+public static void firstTurn() {
+  do {
+    playerTurn();
+    hpCheck();
+    if (fight) {
+      bossTurn();
+    }
+  } while (fight);
+}
+
+//------------------------------------------------------------------------------
+
+public static void secondTurn() {
+  if (bossHP >= 0)
+    System.out.println("Boss HP: " + bossHP);
+  else
+    System.out.println("Boss HP: 0");
+
+  do {
+    bossTurn();
+    playerTurn();
+    hpCheck();
+  } while (fight);
+}
+
+//------------------------------------------------------------------------------
+
+public static void hpCheck() {
+  System.out.println("");
+  if (playerHP > 0) {
+    System.out.println("Your HP: " + playerHP);
+    if (bossHP > 0)
+      System.out.println("The Stranger HP: " + bossHP);
+    else {
+      System.out.println("The Stranger HP: 0"
+                       + "\nThe Stranger Defeated");
+      fight = false;
+    }
+  }
+  else {
+    System.out.println("Your HP: 0");
+    diedText();
+
+    switch (tryAgain.toLowerCase()) {
+      case "yes": resetStats(); coinFlip(); break;
+      default:
+    }
+  }
+
+}
+
+//------------------------------------------------------------------------------
+
+public static void dmgCheck() {
+  int bossDmg = (int)(1+Math.random()*3);
+  if(unBlockable) {
+    System.out.println("\ndamage received: -" + bossDmg);
+    playerHP = playerHP - bossDmg;
+    unBlockable = false;
+  }
+  else if (bossAttackVal == posBossTurnMoveVal)
+    System.out.println("\ndodge successful\ndamage avoided: -" + bossDmg);
+  else {
+    System.out.println("\ndodge unsucessful\ndamage received: -" + bossDmg);
+    playerHP = playerHP - bossDmg;
+  }
+  if (playerHP > 0)
+    System.out.println("\nYour HP: " + playerHP + "\n");
+}
+
+//------------------------------------------------------------------------------
+
+public static void resetStats() {
+  fight = true;
+  bossHP = 20;
+  playerHP = 5;
+}
+
+//------------------------------------------------------------------------------
+public static boolean proceedPathVal = false;
+public static void questionPath() {
+  int confused = 1;
+  String notBrave = "";
+  String seemConfused = "";
+  String pathQuestion = "";
+  if (whichPath == 1) {
+    notBrave = "You were not brave enough to reach the end of the "
+             + "path.\nYou decided to head back to the center of "
+             + "the valley.";
+    seemConfused = "You seem to be confused. Let's try that again.";
+    pathQuestion = "Do you still wish to proceed? (yes/no): ";
+  }
+  else if (whichPath == 2) {
+    notBrave = "Thee w're not brave enow to reacheth the endeth "
+             + "of the path."
+             + "\nThee hath decided to head back to the "
+             + "center of the valley.";
+    seemConfused = "Thee seemeth to beest did confuse. Tryeth again.";
+    pathQuestion = "Doth thee still wisheth to proceed? (aye/nay): ";
+  }
+  do {
+    System.out.print(pathQuestion);
+
+    String proceedPath = input.nextLine();
+    if (proceedPath.equalsIgnoreCase("yes") ||
+                                        proceedPath.equalsIgnoreCase("aye")) {
+      proceedPathVal = true;
+      confused--;
+    }
+    else if (proceedPath.equalsIgnoreCase("no") ||
+                                        proceedPath.equalsIgnoreCase("nay")) {
+      System.out.println(divider);
+      constantType(40, notBrave);
+      System.out.println("\n" + divider);
+      constantType(40, "You ponder once again:");
+      System.out.println("");
+
+      whichPath = 0;
+      proceedPathVal = false;
+      confused--;
+    }
+    else {
+      constantType(100, seemConfused);
+      System.out.println("\n");
+    }
+  } while(confused == 1);
+
+}
+
+//Future Door Phase------------------------------------------------------------
+public static void phaseFourDoorOne(){
+  boolean proceedToFuture = false;
+  int numberEnteredVal = 0;
+    do {
+      System.out.println ("You approach a door with a futuristic looking " +
+      "frame...");
+      System.out.println ("You have 3 tries to guess a number between 1 and " +
+      "10...\n");
+
+      int guessNumber = (int)(1 + Math.random() * 10);
+      int tries;
+      for (tries = 2; tries >= 0; tries--) {
+        System.out.println("Please type in your best guess:");
+        String numberEntered = input.nextLine();
+        switch(numberEntered) {
+          case "1": numberEnteredVal = 1; break;
+          case "2": numberEnteredVal = 2; break;
+          case "3": numberEnteredVal = 3; break;
+          case "4": numberEnteredVal = 4; break;
+          case "5": numberEnteredVal = 5; break;
+          case "6": numberEnteredVal = 6; break;
+          case "7": numberEnteredVal = 7; break;
+          case "8": numberEnteredVal = 8; break;
+          case "9": numberEnteredVal = 9; break;
+          case "10": numberEnteredVal = 10; break;
+          default: numberEnteredVal = 0; break;
+        }
+
+        if (numberEnteredVal == 0) {
+          System.out.println("Dummy, I said enter a number BETWEEN 1-10");
+          System.out.println("Don't you know your numbers? (◔_◔)");
+          System.out.println("As punishment, this counts as a try.");
+          System.out.println("Your tries left: " + tries);
+        }
+        else if (numberEnteredVal < guessNumber ) {
+          System.out.println("The number you guessed was lower than the " +
+          "number.");
+
+          System.out.println("Your tries left: " + tries);
+        }
+
+        else if (numberEnteredVal > guessNumber) {
+          System.out.println("The number you guessed was higher than the " +
+          "number.\n");
+
+          System.out.println("Your tries left: " + tries);
+        }
+        else if (numberEnteredVal == guessNumber) {
+          futureDoorLoop = false;
+          proceedToFuture = true;
+          tries = 0;
+        }
+
+      }
+      if (tries <= 0 && numberEnteredVal != guessNumber) {
+        constantType(40, "The number was " + guessNumber);
+        constantType(80, "You failed to guess the correct number in 3 " +
+        "tries..\n");
+        System.out.println("");
+        futureCheckPoint();
+        }
+
+
+    } while(futureDoorLoop);
+
+
+   if (proceedToFuture) {
+     checkpointFuturistic = false;
+      System.out.println("Congratulations you guessed the correct number!\n" +
+      "You may enter the door..\n");
+
+      System.out.println("\nYou enter through the futuristic door.." +
+           "\nYou pass out instantly and wake up to a sound you've never" +
+           "heard." +
+           "\nYou hear footsteps approaching and see two odd looking men " +
+           "coming near you."
+           );
+
+      System.out.println("\nBoth men appear to be wearing some sort of " +
+           "uniform.." +
+           "\nIn both of their hands is a futuristic looking weapon.. " +
+           "\nOne of them is brandishing a black mohawk and the other appears"
+           + " to have a ginger afro."
+           );
+
+
+     System.out.println("\nWho are you?! states the odd looking mohawk man..");
+     boolean choiceLoop = true;
+     do {
+       System.out.println("\nReply with 'Why do you care?' (1) " +
+       "or Reply with 'Where am I?' (2) ");
+       int dialougeChoice1 = input.nextInt();
+
+       if (dialougeChoice1 == 1) {
+         choiceLoop = false;
+        constantType(80, "\n(You) - Why do you care?" +
+        "\n(Suspicious Man 1) - Who do you think you're talking to like that?" +
+        "\n(Suspicious Man 2) - Do you have any idea who we are?" +
+        "\n(You) - I apologize I ran through a portal and ended up here.." +
+        "\n(Suspicious Man 2) - Haha you must be dreaming! A portal?" +
+        "\n(You) - It's hard to explain but who are you guys anyway?" +
+        "\n(Suspicious Man 1) - We cannot disclose our names to the public.." +
+        "\n(Suspicious Man 2) - Just know that we are always watching.");
+       }
+
+       else if (dialougeChoice1 == 2) {
+         choiceLoop = false;
+        constantType(80, "\n(You) - Where am I?" +
+        "\n(Suspicious Man 1) - You've arrived in Nightshine City.." +
+        "\n(Suspicious Man 2) - Yep! Nightshine City a glorious dystopian city."
+        + "\n(You) - What's it like here?" +
+        "\n(Suspicious Man 1) - You must be a complete outsider ahahaha" +
+        "\n(Suspicious Man 2) - Nightshine City offers everything one can dream" +
+        " of" +
+        "\n(Suspicious Man 1) - But be careful of your actions outsider.." +
+        "\n(You) - What do you mean?" +
+        "\n(Suspicious Man 2) - Just know that we are always watching.");
+       }
+       else{
+         System.out.println("Sorry that is an invalid input");
+       }
+     } while(choiceLoop);
+
+     choiceLoop = true;
+     do {
+       System.out.println("\nReply with 'Why do you care?' (1) " +
+       "or Reply with 'Where am I?' (2) ");
+
+       int otherDialougeChoice1 = input.nextInt();
+
+
+       if (otherDialougeChoice1 == 2) {
+         choiceLoop = false;
+         constantType(80, "\n(You) - Where am I?" +
+         "\n(Suspicious Man 1) - You've arrived in Nightshine City.." +
+         "\n(Suspicious Man 2) - Yep! Nightshine City a glorious dystopian " +
+         "city." +
+         "\n(You) - What's it like here?" +
+         "\n(Suspicious Man 1) - You must be a complete outsider ahahaha" +
+         "\n(Suspicious Man 2) - Nightshine City offers everything one can " +
+         "dream of" +
+         "\n(Suspicious Man 1) - But be careful of your actions outsider.." +
+         "\n(You) - What do you mean?" +
+         "\n(Suspicious Man 2) - Just know that we are always watching."
+         );
+       }
+
+       else if (otherDialougeChoice1 == 1) {
+         choiceLoop = false;
+         constantType(80, "\n(You) - Why do you care?" +
+         "\n(Suspicious Man 1) - Who do you think you're talking to like that?" +
+         "\n(Suspicious Man 2) - Do you have any idea who we are?" +
+         "\n(You) - I apologize I ran through a portal and ended up here.." +
+         "\n(Suspicious Man 2) - Haha you must be dreaming! A portal?" +
+         "\n(You) - It's hard to explain but who are you guys anyway?" +
+         "\n(Suspicious Man 1) - We cannot disclose our names to the public.." +
+         "\n(Suspicious Man 2) - Just know that we are always watching.");
+
+
+       System.out.println("\nBoth men face each other and nod their head");
+       System.out.println("\n(Suspicious Man 1) - Outsider... Come with us");
+       System.out.println("\nYou follow the strange men walking throughout the "
+       + "alleys");
+       System.out.println("\nThe city is beautiful and has neon vibrant lights "
+       + "everywhere");
+       System.out.println("\nYou look above and see cars flying through the "
+       + "air");
+       System.out.println("\nYou think to yourself what a strange portal..");
+       System.out.println("\nIt's like you've landed in the future..");
+       System.out.println("\nThe strange men tell you about a corrupt man who"
+       + " rules over the city and has a high position in the government.");
+       System.out.println("\nThey ask you if you have the strength to aid the "
+       + "people"
+       + " in a revolution against the tyranny of the ruler.");
+      }
+      else {
+        System.out.println("Invalid input.");
+
+      }
+     } while(choiceLoop);
+
+     constantType(80, "\n(Suspicious Man 1) - Please aid us and the people " +
+     "outsider..");
+     constantType(80, "\n(Suspicious Man 2) - The city needs your help");
+
+     choiceLoop = true;
+     do {
+     constantType(80, "\n Agree? (1)");
+
+     int dialougeChoice3 = input.nextInt();
+
+     if (dialougeChoice3 == 1) {
+       choiceLoop = false;
+       constantType(80, "\n (You) - I agree.." +
+       "\n *You shake both of the men's hands*" +
+       "\n (You) Take me to the government chambers. I'll face this tyrant " +
+       "head on." +
+       "\n (Suspicious Man 1) - It's very dangerous to go alone.." +
+       "\n (Suspicious Man 2) - You don't even have anything to protect you.." +
+       "\n (Suspicious Man 1) - Here take this.." +
+       "\n *You received a rusty futuristic blaster from Suspicious Man 1!*" +
+       "\n (You) - Thank you. Now how do I get to the chambers?" +
+       "\n (Suspicious Man 1) - Hop in with us we'll give you a ride.."
+       );
+     }
+     else {
+       System.out.println("Invalid input.");
+     }
+   } while(choiceLoop);
+
+     System.out.println("\n*You get in a strange vehicle that ascends slowly " +
+     "in the air");
+     System.out.println("\nIt's like nothing you've experienced before.");
+     System.out.println("\nThe wind of the night sky flows through your hair " +
+     "and body");
+     System.out.println("\nAs you traverse the skys you see large roman" +
+     " arches ahead");
+     System.out.println("\nThis must be home of the tyrant ruler of " +
+     "Nightshine City");
+     System.out.println("\nThe vehicle comes to a stop and you get out");
+     System.out.println("\nThe two suspicious men tell you that they'll wait " +
+     "outside");
+
+     constantType(80, "\n (Suspicious Man 1) - You must go in solo and face " +
+     "him yourself.");
+     constantType(80, "\n (Suspicious Man 1) - It's too dangerous for us to " +
+     "come with you");
+     constantType(80, "\n *You nod your head and enter into the chambers*. ");
+
+     choiceLoop = true;
+
+     do {
+     constantType(80, "\n Two doors await you. Will you go enter the door (1)");
+
+     int dialougeChoice4 = input.nextInt();
+
+     if (dialougeChoice4 == 1) {
+       choiceLoop = false;
+       System.out.println("\n *You decide to enter the door" +
+       "\n You stumble across what appears to be a giant vacant throne" +
+       "\n You walk up to the vacant throne and see letters inscribed in it.." +
+       "\n The letters read: Dictator Rubio" +
+       "\nYou hear the door behind you creak open.." +
+       "\nYou shiver in chills and know that the dictator must of walked in " +
+       "on you" +
+       "\nYou slowly turn your head to face the surprising encounter" +
+       "\nSure enough standing behind you is the man himself that indulges wrath" +
+       " upon the city");
+
+       constantType(80, "\n(Dictator Rubio) - What in the world do you " +
+       "think you're doing?" +
+       "\n(Dictator Rubio) - Why are you in my throne room outsider? " +
+       "What quarrels" +
+       " do you want with me?" +
+       "\n(You) - I've heard many stories about you and your ruling of the " +
+       "city." +
+       "\n(You) - The people of Nightshine City deserve a better ruler!" +
+       "\n(Dictator Rubio) - Ahahaha you're listening to those little ants?" +
+       "\n(You) - How could you call your citizens ants?" +
+       "\n(You) - Your tyranny must end now!" +
+       "\n(Dictator Rubio) - You leave me no choice foolish outsider.."
+       );
+      }
+      else {
+        System.out.println("Invalid input.");
+
+      }
+      }while(choiceLoop);
+
+     System.out.println("\n The Dictator takes out a remote with a red button" +
+     " and begins to push down on the red button" +
+     "\n You hear the ground shake and the door behind you dissappears " +
+     "suddenly.." +
+     "\n The lights in the room dim and all of the sudden the Dictator is gone.." +
+     "\n Fear surrounds your body but you remember that you must remain calm " +
+     "and brave" +
+     "\n It's up to you to save the people from this tyrant" +
+     "\n You hear a large robotic sound coming as if a mech was nearby.." +
+     "\n You hear a loud thump as if it's slowly getting closer to you." +
+     "\n Slowly appearing in your peripheral vision appears to be a giant " +
+     "mech.." +
+     "\n The Dictator appears to be wearing a mech suit armed with rockets " +
+     "on each side"
+     );
+
+     System.out.println("\nYou hear a loud sound and watch as the mech fires " +
+     "a rocket" +
+     "\n The rocket drifts heading straight on towards your direction"
+     );
+
+     choiceLoop = true;
+     do {
+       System.out.println("Will you attempt to dodge? (1) or fire your blaster " +
+       "at the" +
+       " rocket? (2)");
+
+       int dialougeChoice5 = input.nextInt();
+
+       if (dialougeChoice5 == 2) {
+         choiceLoop = false;
+         System.out.println("\n *You attempt to unholster your blaster quickly*" +
+         "\nBefore you can unholster it the rocket moves at blazing speed and " +
+         "impacts" +
+         " right at you" +
+         "\nYour life flashes before you and your vision turns black" +
+         "\nYou have died.... This is where your revolution ends..." +
+         "\nAhh... how short-lived..."
+         );
+         theEndText();
+
+       }
+
+       else if (dialougeChoice5 == 1) {
+         choiceLoop = false;
+         System.out.println("\n *You decide to attempt to dodge the rocket*" +
+         "\n You begin to jump and dive to the right landing on the floor. " +
+         "\n Your heart begins to pound drastically.." +
+         "\n You hear a large boom and see the rocket pierced through the wall " +
+         "that" +
+         " was previously behind you."
+         );
+       }
+       else {
+         System.out.println("That's an invalid input.");
+       }
+     } while(choiceLoop);
+     constantType(80, "\n(Dictator Rubio) - Ahahaha you cannot stop me!" +
+     "\nThe mech ascends in the air with rocket fuel and hovers above you.." +
+     "\nThe Dictators facial expression has turned into a smirk" +
+     "\nYou hear a loud sound and see another rocket has been fired" +
+     "\nThis time the rocket is drifting towards you from an aerial perspective"
+     );
+
+     choiceLoop = true;
+     do {
+     constantType(80, "\nType (1) to fire your blaster back");
+     int dialougeChoice6 = input.nextInt();
+       if (dialougeChoice6 == 1) {
+         choiceLoop = false;
+         System.out.println("\nYou fire your blaster back hitting the rocket " +
+         "on impact" +
+         "\n You fire another shot in an opening and hit the mech right " +
+         "in the chest." +
+         "\n It looks like the mechs weak point is the chest!" +
+         "\n The mech descends and runs full speed at you in a close encounter"+
+         "\n You close your eyes and think to yourself that it's over..." +
+         "\n You hear the mech getting closer and closer with your eyes shut" +
+         "\n All of the sudden you hear a loud explosion...");
+       }
+       else {
+         System.out.println("That's an invalid input.");
+       }
+     } while(choiceLoop);
+       constantType(80, "\n(Dictator Rubio) - AAAAGH NOOOOOOOOO!" +
+       "\n(Dictator Rubio) - How could this be!" +
+       "\nYou hear a loud explosion and see the two strange uniformed men " +
+       "smirking" +
+       " behind you." +
+       "\n(You) - What are you guys doing in here? What happened...." +
+       "\n(Suspicious Man 1) - This was all apart of the plan. You were the " +
+       "distraction" +
+       "\n(Suspicious Man 2) - When he was distracted we saw an opening and " +
+       "fired " +
+       "a rocket" +
+       " right at him!" +
+       "\n(Suspicious Man 1) - Today is a great day in Nightshine City" +
+       "\n(Suspicious Man 1) - That tyrants rule is over and its all thanks " +
+       "to you!" +
+       "\n(Suspicious Man 2) - You seriously saved the whole city and even us.."
+       );
+
+       System.out.println("\n *6 months pass" +
+       "\nYou made new friends and new connections in this distant world and " +
+       "city" +
+       "\nYou say your goodbyes and say that you must return to your home" +
+       "\nYou go into the alleys from where you came 6 months ago" +
+       "\nThe door appears to be there and you jump into the door quickly" +
+       "\nYou return back to your home. The glorious cornfields and farm " +
+       "awaits you" +
+       "\nWhat a crazy adventure you had. You will always remember it and " +
+       "might " +
+       "return" +
+       " some day.");
+       theEndText();
+      }
+
+    }
+
+//------------------------------------------------------------------------------
+public static void futureCheckPoint() {
+  if (checkpointFuturistic) {
+    System.out.println("\n\nYou have died! If you wish to start from your " +
+                       "recent checkpoint, enter yes. \nOtherwise, enter no.");
+    String continueDoorOne = input.nextLine();
+    if (continueDoorOne.equalsIgnoreCase("yes") ||
+        continueDoorOne.equalsIgnoreCase("y")) {
+      System.out.println("You entered YES. The game will continue");
+      checkpointText();
+    }
+    else if(continueDoorOne.equalsIgnoreCase("no") ||
+            continueDoorOne.equalsIgnoreCase("n")) {
+      System.out.println("You entered NO. The game will now exit");
+      gameoverText();
+      checkpointFuturistic = false;
+      futureDoorLoop = false;
+    }
+    else {
+      System.out.println("You seem to have entered an invalid option. " +
+                        "Game will now exit.");
+      gameoverText();
+      checkpointFuturistic = false;
+      futureDoorLoop = false;
+    }
+  }
+}
+//------------------------------------------------------------------------------
+
+public static void westEnding() {
+  randomType("\nYou have defeated The Stranger..."
+  + "\nAs a reward, you, the Traveler, "
+  + "\nhave become the keeper of the 'The Present' path."
+  + "\nYou have become the new Stranger for travelers yet to come."
+  + "\n\nA cycle renewed...");
+  theEndText();
+  stopGame = false;
+
+
+}
+//------------------------------------------------------------------------------
+public static void phaseFourDoorTwo() {
+  do {
+    doorTwoLevel();
+    pause(3000);
+    seeCheckpoint();
+  } while (checkpointMedieval);
+}
+//------------------------------------------------------------------------------
+/*This method stores the beginning of door two, where the player can choose
+to either go the west or east path. The program itself is stored in a while
+statement so that the user will be stuck in the loop until the user chooses
+either west or east.*/
+public static void doorTwoLevel() {
+    constantType(50, "Door 2 has been unlocked. Welcome to the Medieval " +
+          "Times! \nThere seems to be two paths, one heading " +
+          "west, and the other heading east.");
+
+    boolean stopPath = true;
+
+    do {
+    System.out.println("\nWhich path will you take, (West/East)");
+
+    String pathMedievalChoice = input.nextLine();
+    if (pathMedievalChoice.equalsIgnoreCase("west") ||
+       pathMedievalChoice.equalsIgnoreCase("w")) {
+      doorTwoWestPath();
+      stopPath = false;
+    }
+    else if (pathMedievalChoice.equalsIgnoreCase("east") ||
+       pathMedievalChoice.equalsIgnoreCase("e")) {
+      doorTwoEastPath();
+      stopPath = false;
+    }
+    else {
+      System.out.println("Invalid option, please try again!");
+    }
+  } while (stopPath);
+}
+//------------------------------------------------------------------------------
+/*The west path is where the main part of door 2 takes place. Door 2 is
+meant to transport the player to the medieval times, and throughout this
+part of the game, the user meets up with a stranger to either protect the
+kingdom or be arrested and die.*/
+public static void doorTwoWestPath() {
+    constantType(50, "You seem to have chosen the path heading West..." +
+           "\nUpon taking the path you spot a person outside a castle. " +
+           "\nThere are also two guards from the castle standing beside him."
+           );
+
+    pause(3000);
+
+    System.out.println("");
+    System.out.println("\n\"Oh why hello there young lad! You do not seem to "
+                      +"be from around here. \nLet me introduce you to "
+                      +"this place.\" ");
+    pause(5000);
+
+    System.out.println("\n\"Here we are guarded by the great King Gregory! " +
+                     "However, lately he hasn't been so great. \nThat is " +
+                     "because of a terror that has been lurking the woods "+
+                     "outside the kingdom!\" \n\"Do you think maybe you can "+
+                     "help us and protect the kingdom??\"");
+    pause(10000);
+
+    System.out.println("To say yes enter 'Y' or enter 'N' to answer no");
+    char userAnswer = input.next().charAt(0);
+
+    if (userAnswer == 'Y' || userAnswer == 'y') {
+      System.out.println("\n\"Oh how delightful it is to see someone be so "+
+                        "brave like you!" + "\nHowever, you can't fight " +
+                        "that monster without any gear to protect you. " +
+                        "\nTake one of these items to help you on your " +
+                        "quest.\"");
+
+      pause(8000);
+
+      System.out.println("\n\"Also, another thing to keep in mind. " +
+                        "\nThe terror creeping the woods seems to like " +
+                        "keeping his distance...\"");
+
+      pause(5000);
+
+      System.out.println("\"So choose your weapons wisely...\"");
+
+      pause(5000);
+
+      System.out.println("\nRandom civilian shows you three items; musket, " +
+                         "cannon, and a sword. " +
+                         "\nWhich one do you choose?");
+
+      System.out.print("To choose musket enter 'M' " +
+                       "\nTo choose cannon enter 'C' " +
+                       "\nTo choose sword enter 'S': ");
+      char userWeaponChoice = input.next().charAt(0);
+
+      if (userWeaponChoice == 'M' || userWeaponChoice == 'm') {
+        System.out.println("\"So you decided to go with a musket. Good "
+                          +"choice! \nMuskets are pretty strong from far "
+                          +"range\"");
+
+        pause(5000);
+
+        System.out.println("Using your musket, you are able to snipe the " +
+                         "monster from a far. ");
+
+        constantType(80, "\nYou have defeated the monster lurking the woods");
+
+        System.out.println("\n\"Oh why thank you brave soldier!, the King "
+                          + "will be delighted by the news!\"");
+
+        pause(5000);
+        System.out.println("\nYou follow the civilian as he leads you inside "
+                          +"the kingdom");
+
+        pause(5000);
+        constantType(80, "\n\"Hello there brave soldier! My name is King " +
+                     "Gregory.\"");
+        System.out.println("\n\"I am delighted to see the face of the brave "+
+                           "soldier who defeated the evil monster.\" "+
+                           "\n\"Say young fellow... \"");
+
+        pause(8000);
+        System.out.println("\n\"\nFor " +
+                           "defeating such a monster, I will like to give a "+
+                           "reward!\"");
+        checkpointMedieval = false;
+        storyEnding();
+      }
+      else if (userWeaponChoice == 'C' || userWeaponChoice == 'c') {
+        System.out.println("\"So you decided to go with a cannon. It seems " +
+                          "pretty heavy..." + "\nWill you be able to take " +
+                          "into battle?.\"");
+
+        pause(5000);
+
+        constantType(80, "In trying to bring the cannon all by yourself into"+
+                    " the woods, you break your back." +
+                    "\nNot only that, but the monster spots you from a " +
+                    "distance.");
+
+        randomType("\nYou are unable to run away and the monster kills you");
+      }
+      else if (userWeaponChoice == 'S' || userWeaponChoice == 's') {
+        System.out.println("\"So you decided to go with a sword. A weird " +
+                          "choice, but it might work!\"");
+
+        pause(5000);
+
+        constantType(50, "Using your sword, you try to sneak attack the "+
+                     "monster. \nHowever the monster seems to be unscathed "+
+                     "by the attack." + "\nThis is not looking good...");
+
+        randomType("\nThe monster instantly retaliates, and eats you...");
+      }
+      else {
+      }
+    }
+  else {
+    System.out.println("\n\"So you don't want to help out huh? " +
+                        "\nGuards! GET HIM!\"");
+    pause(5000);
+
+    randomType("You have been sent to the castle's prison... " +
+              "\nA week goes by... \n2 weeks goes by... " +
+              "\nA month goes by... ");
+
+    randomType("\nYou have died from hunger and dehydration...");
+  }
+}
+//------------------------------------------------------------------------------
+public static void storyEnding() {
+  System.out.println("\n\"You see... " + "I am reaching my final days..." + "I "
+                  +"have been ruling this kingdom for nearly 50 years, and "
+                  +"sadly. I think my time is coming to an end...\"");
+  pause(8000);
+
+  System.out.println("\n\"So as a final act as King, I will like to give a "
+                    +"gift to the hero who saved this kingdom. You have "
+                    +"three choices" + "choose wisely brave soldier!\"");
+  pause(8000);
+
+  System.out.println("\nThe king has presented you with three gifts!");
+  System.out.println("A dusty crown \nA pen that seems to be from present " +
+                     "time \nAnd a book that has ruins printed at the front."
+                     );
+
+  pause(8000);
+  boolean notGift = true;
+  do {
+    System.out.print("To choose dusty crown, enter 'D': "
+                      +"\nTo choose pen, enter 'P':"
+                      +"\nTo choose book, enter 'B': ");
+    String choiceGift = input.next();
+    switch(choiceGift.toLowerCase()) {
+      case "d": dustyCrown(); notGift = false; break;
+      case "p": pen(); notGift = false; break;
+      case "b": bookRuin(); notGift = false; break;
+      default: System.out.println("Invalid option");
+    }
+  } while(notGift);
+}
+//------------------------------------------------------------------------------
+public static void dustyCrown() {
+  System.out.println("\nYou picked the dusty crown. \nYou try the crown on "
+                    +"your head and suddenly, the crown seems to be reborn. "
+                    +"\nThe king then bows down in front of you.");
+  pause(8000);
+
+  constantType(80, "\n\"Yes, Yes, it has to be you..."
+              +"\nYou are the chosen one, the one who will rule the kingdom "
+              +"\nAnd bring it to its former glory\"");
+
+  randomType("\n\nCongratulation, you are now the new King of Flowerdale");
+  randomType("\nAnd you will remain the King, for the rest of your life....");
+  randomType("\n\nYou have unlocked the bad ending...");
+  theEndText();
+}
+//------------------------------------------------------------------------------
+public static void pen() {
+  System.out.println("pen");
+  System.out.println("\nYou picked the pen that appears to be from present "
+                    +"time. \nYou decide to click on the pen just for fun. "
+                    +"\nHowever, it triggers the pen and it starts to glow "
+                    +"bright white. \nEverything around you goes white and "
+                    +"when your vision comes back. You see flying cars!?");
+
+  pause(8000);
+  constantType(50, "\n\"GET OUT OF THE WAY!\"");
+  randomType("\n\nYou teleported at the middle of a road intersection.");
+  randomType("\n\nA flying car goes zooming by and hits you...");
+  randomType("\n\nYou die with no way of coming back...");
+  randomType("\n\nYou have unlocked the really bad ending...");
+  theEndText();
+}
+//------------------------------------------------------------------------------
+public static void bookRuin() {
+  System.out.println("\nYou picked the book of ruins. \nYou open the book "
+                    +"and the book begins to glow. \nShocked by this "
+                    +"you throw the book at the floor and the book begins "
+                    +"to float. \nThe glow in the book then dies down and "
+                    +"it hits your head falling down.");
+
+  pause(8000);
+
+  constantType(50, "\n\"Do you think he will be ok my lord! I...\"");
+  constantType(80, "\n\n*Beep* *Beep* Beep* *Beep*");
+  randomType("\n\nYou wake up, inside a room. You were asleep on a bed.");
+  randomType("\n\nYou realize that this whole time, you were dreaming?!");
+  randomType("\n\nYou have unlocked the good ending...");
+  theEndText();
+}
+//------------------------------------------------------------------------------
+/*This is the east path that the user can choose. The east path is mainly
+used for filler, and for the player to see what the east side has in store.*/
+public static void doorTwoEastPath() {
+  constantType(50, "You seem to have chosen the path heading East..." +
+              "\nAfter walking for hours, you find nothing. " + "\nSuddenly "+
+              "you get jumped by 3 spear goblins...");
+
+  randomType("\nYou have nothing to defend yourself with and die...");
+}
+//------------------------------------------------------------------------------
+/*This method is used to print the text that is displayed when the user
+wants to return to their previous checkpoint.*/
+public static void checkpointText() {
+  System.out.println("\n-------------------------------------------------"+
+                    "\n+++++++++++++++++++++++++++++++++++++++++++++++++");
+  constantType(60, "     === U S I N G   C H E C K P O I N T === ");
+  System.out.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++"+
+                    "\n-------------------------------------------------\n");
+}
+//------------------------------------------------------------------------------
+/*Thjs method is used to print the text that is displayed when the user
+decides to not use their previous checkpoint and end the game.*/
+public static void gameoverText() {
+  System.out.println("\n----------------------------"+
+                    "\n++++++++++++++++++++++++++++");
+  constantType(100, " === G A M E   O V E R === ");
+  System.out.println("\n++++++++++++++++++++++++++++"+
+                    "\n----------------------------");
+}
+//------------------------------------------------------------------------------
+public static void theEndText() {
+  System.out.println("\nMMMMMMMMMMMMMMMMMMMMMMMMMMMM"+
+                     "\n0000000000000000000000000000");
+  constantType(100, "   === T H E   E N D  ===   ");
+  System.out.println("\n0000000000000000000000000000"+
+                     "\nMMMMMMMMMMMMMMMMMMMMMMMMMMMM");
+}
+//------------------------------------------------------------------------------
+/*A unique concept that was implemented in this game is the use of checkpoints
+Checkpoints are automatically saved throughout the game and when the player
+dies throughout the game, they can choose to either continue the game from
+their previous checkpoint, or end the game..*/
+public static void seeCheckpoint() {
+  if (checkpointMedieval) {
+    System.out.println("\n\nYou have died! If you wish to start from your " +
+                       "recent checkpoint, enter yes. \nOtherwise, enter no.");
+    String continueDoorTwo = input.nextLine();
+    if (continueDoorTwo.equalsIgnoreCase("yes") ||
+        continueDoorTwo.equalsIgnoreCase("y")) {
+      System.out.println("You entered YES. The game will continue");
+      checkpointText();
+    }
+    else if(continueDoorTwo.equalsIgnoreCase("no") ||
+            continueDoorTwo.equalsIgnoreCase("n")) {
+      System.out.println("You entered NO. The game will now exit");
+      gameoverText();
+      checkpointMedieval = false;
+    }
+    else {
+      System.out.println("You seem to have entered an invalid option. " +
+                        "Game will now exit.");
+      gameoverText();
+      checkpointMedieval = false;
+    }
+  }
+}
+//------------------------------------------------------------------------------
+  //This method is used to pause threads of text. Such as paragraphs.
+  public static void pause(long milliseconds) {
+             try {
+               Thread.sleep(milliseconds);
+             } catch (InterruptedException ie) {}
+    }
+//------------------------------------------------------------------------------
+  /*This method is used to print out strings word for word as if someone is
+    on the keyboard.*/
+  public static void randomType(String str) {
+      for(int i = 0; i < str.length(); i++) {
+        System.out.print(str.charAt(i));
+        pause((int)(Math.random() * 250));
+      }
+      System.out.print(" ");
+    }
+//------------------------------------------------------------------------------
+  /*This method is used to print out strings word for word at a constant pace
+  rather than having it being printed at random rates.*/
+  public static void constantType(long milliseconds, String str) {
+    for(int i = 0; i < str.length(); i++) {
+      System.out.print(str.charAt(i));
+      pause(milliseconds);
+    }
+    System.out.print(" ");
+  }
+//------------------------------------------------------------------------------
+  public static void displayHelp() {
+    System.out.println("Hello new player! I am here to help you!");
+    System.out.println("\nFirst, let's get started with directions.");
+    System.out.println("Our basic directions are as follows:"
+                      +"\nUse (W) for going West"
+                      +"\nUse (E) for going East"
+                      +"\nUse (N) for going Noth"
+                      +"\nUse (S) for going south"
+                      +"\nOr you can enter the full word as well.");
+    System.out.println("\nSecondly, there is player choice actions that affect "
+                      +"the story and its outcome."
+                      +"\nThere are also parts of the game that require you "
+                      +"choose a weapon or item"
+                      +"\nIn those cases, enter what "
+                      +"the program tells you to enter. Such as Y for yes or N"
+                      +"\nfor no."
+                      +"\nThere are also different endings of the story "
+                      +"depending on what path and item you choose"
+                      +"\nSo choose wisely");
+    System.out.println("\nThroughout the game, the user will be presented with "
+                      +"\nthe option to use checkpoints if they die in a "
+                      +"\ncertain part of the game. It is up to you to "
+                      +"\nenter either 'yes' or 'no', to decide if you want "
+                      +"\ncontinue or end the game entirely. If you enter "
+                      +"\nsomething that is nor yes or no, the program will "
+                      +"detect it as no, and the game will close.");
+                      //add in whatever other command we implemented to help
+  }
+//------------------------------------------------------------------------------
+}
